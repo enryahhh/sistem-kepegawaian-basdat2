@@ -14,7 +14,8 @@ class JabatanController extends Controller
      */
     public function index()
     {
-        //
+        $jabatan = Jabatan::all();
+        return view('admin.jabatan.index',['jabatan'=>$jabatan]);
     }
 
     /**
@@ -35,7 +36,10 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Jabatan::create([
+            'nama_jabatan' => $request->nama_jabatan
+        ]);
+        return redirect()->back();
     }
 
     /**

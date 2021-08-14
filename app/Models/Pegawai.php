@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Jabatan;
+use App\Models\Bagian;
 
 class Pegawai extends Model
 {
@@ -25,6 +27,14 @@ class Pegawai extends Model
         'status',
         'id_bagian',
         'id_jabatan' ,
-
+        'id_user'
     ];
+
+    public function jabatan(){
+        return $this->belongsTo(Jabatan::class,'id_jabatan');
+    }
+
+    public function bagian(){
+        return $this->belongsTo(Bagian::class,'id_bagian');
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Pegawai;
 class Cuti extends Model
 {
     use HasFactory;
@@ -16,5 +16,9 @@ class Cuti extends Model
         'keterangan',
         'lama_cuti'
     ];
-    protected $timestamps = false;
+    public $timestamps = false;
+
+    public function pegawai(){
+        return $this->belongsTo(Pegawai::class,'kode_pegawai');
+    }
 }

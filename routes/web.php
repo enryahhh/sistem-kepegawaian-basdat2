@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BagianController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\CutiController;
+use App\Models\Pegawai;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +24,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::view('/dashboard','admin.dashboard')->name('dashboard');
+Route::middleware('auth')->group(function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard',function(){
+    $jmlh = Pegawai::all();
+    return view('admin.dashboard',['jmlh'=>count($jmlh)]);
+})->name('dashboard');
 
 Route::resources([
     'bagian' => BagianController::class,
     'jabatan'=> JabatanController::class,
-    'pegawai'=> PegawaiController::class
+    'pegawai'=> PegawaiController::class,
+    'cuti' => CutiController::class
 ]);
+});
+
+
+

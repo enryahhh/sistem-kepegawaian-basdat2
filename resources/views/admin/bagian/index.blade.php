@@ -20,7 +20,7 @@
       <td>{{ $item->nama_bagian }}</td>
       <td>
           <button class="btn btn-success ubah" data-toggle="modal" data-id="{{ $item->id_bagian }}" data-target="#bagianModal">Ubah</button>
-          <form action="{{route('bagian.destroy',$item->id_bagian)}}" method="post">
+          {{-- <form action="{{route('bagian.destroy',$item->id_bagian)}}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit"
@@ -28,7 +28,7 @@
                 class="delete btn btn-danger">
                 Hapus
             </button>
-        </form>
+        </form> --}}
       </td>
     </tr>
     @endforeach

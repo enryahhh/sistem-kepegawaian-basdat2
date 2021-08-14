@@ -23,6 +23,7 @@
       <td>{{ $item->nama_bagian }}</td>    
       <td> {{ $item->nama_jabatan }} </td>
       <td>
+      <a class="btn btn-info" href="{{ route('pegawai.show',$item->kode_pegawai) }}">Detail</a>
           <a class="btn btn-success ubah" href="{{ route('pegawai.edit',$item->kode_pegawai) }}">Ubah</a>
           <form action="{{route('pegawai.destroy',$item->kode_pegawai)}}" method="post" class="d-inline">
             @csrf

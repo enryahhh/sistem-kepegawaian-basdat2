@@ -103,6 +103,7 @@ class PegawaiController extends Controller
             'status' => $request->status,
             'id_bagian' => $request->bagian,
             'id_jabatan' => $request->jabatan,
+            'id_user' => isset(auth()->user()->id_user) ? auth()->user()->id_user : 1
         ]);
 
         return redirect()->route("pegawai.create")->with('pesan','Berhasil Menambahkan Data Pegawai');
@@ -116,7 +117,7 @@ class PegawaiController extends Controller
      */
     public function show(Pegawai $pegawai)
     {
-        //
+        return view('admin.pegawai.detail',compact('pegawai'));
     }
 
     /**
