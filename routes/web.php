@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BagianController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +23,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('/dashboard','admin.dashboard')->name('dashboard');
+
+Route::resources([
+    'bagian' => BagianController::class,
+    'jabatan'=> JabatanController::class,
+    'pegawai'=> PegawaiController::class
+]);
